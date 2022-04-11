@@ -1,0 +1,254 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "swagger": "2.0",
+  "info": {
+    "description": "the purpose of this application is to provide an application\nthat is using go code to define an  Rest API",
+    "title": "Student API.",
+    "version": "0.0.1"
+  },
+  "host": "student.com:31000",
+  "paths": {
+    "/students": {
+      "get": {
+        "description": "Returns existing Student",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Student"
+        ],
+        "summary": "Get Student",
+        "operationId": "GetStudent",
+        "responses": {
+          "200": {
+            "description": "Student data",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Returns new Student",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Student"
+        ],
+        "summary": "Add new Student",
+        "operationId": "Poststudent",
+        "parameters": [
+          {
+            "description": "add Student data",
+            "name": "Student",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student response",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "405": {
+            "description": "Method not allowed"
+          }
+        }
+      }
+    },
+    "/students/{id}": {
+      "get": {
+        "description": "Returns existing Student filtered by id",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Student"
+        ],
+        "summary": "Get Student",
+        "operationId": "GetStudentbyid",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student data",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "400": {
+            "description": "bad request"
+          },
+          "404": {
+            "description": "page not found"
+          }
+        }
+      },
+      "put": {
+        "description": "Update existing Student filtered by id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Student"
+        ],
+        "summary": "Update Student",
+        "operationId": "Updatestudent",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "add Student data",
+            "name": "name",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student data"
+          },
+          "204": {
+            "description": "no content"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete existing Student filtered by id",
+        "tags": [
+          "Student"
+        ],
+        "summary": "Delete  student",
+        "operationId": "StudentDeletestudent",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student data",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "410": {
+            "description": "staus gone  already deleted"
+          }
+        }
+      },
+      "patch": {
+        "description": "Patch existing Student filtered by id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Student"
+        ],
+        "summary": "Parratially Update Student",
+        "operationId": "Updatestudent_patch",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "add Student data",
+            "name": "name",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Student response",
+            "schema": {
+              "$ref": "#/definitions/Student"
+            }
+          },
+          "204": {
+            "description": "no content"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Student": {
+      "type": "object",
+      "title": "Student  ...",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "x-go-name": "Id"
+        },
+        "city": {
+          "type": "string",
+          "x-go-name": "City"
+        },
+        "country": {
+          "type": "string",
+          "x-go-name": "Country"
+        },
+        "course": {
+          "type": "string",
+          "x-go-name": "Course"
+        },
+        "name": {
+          "type": "string",
+          "x-go-name": "Name"
+        },
+        "year_of_admission": {
+          "type": "string",
+          "x-go-name": "YearOfAdmission"
+        }
+      },
+      "x-go-package": "REST_API/Model"
+    }
+  }
+}
