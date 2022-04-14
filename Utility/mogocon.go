@@ -8,7 +8,7 @@ import (
 )
 
 func Connection() *mongo.Client {
-	clientOptions := options.Client().ApplyURI("mongodb://db-service:27017")
+	clientOptions := options.Client().ApplyURI("mongodb://root:root@db-service:27017")
 
 	client, _ := mongo.Connect(context.TODO(), clientOptions)
 	// if err != nil {

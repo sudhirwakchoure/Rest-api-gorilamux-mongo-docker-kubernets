@@ -1,0 +1,31 @@
+# Default values for student.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: studentdata
+  pullPolicy: IfNotPresent
+
+
+
+service:
+  type: NodePort
+  port: 3000
+  targetPort: 3000
+  nodePort: 31000
+
+resources: 
+  limits:
+    cpu: 500m
+    memory: 128Mi
+  requests:
+    cpu: 500m
+    memory: 128Mi
+
+selector:
+  app: studentapp
+
+containerPort: 3000
+

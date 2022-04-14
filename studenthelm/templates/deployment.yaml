@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.selector.app}}
+  name: student-deplyment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.selector.app}}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.selector.app}}
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}
+        name:  studentappimage 
+        resources:
+          limits:
+            memory: {{ .Values.resources.requests.memory}}
+            cpu: {{ .Values.resources.requests.cpu}}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
+          name: studentapp
+

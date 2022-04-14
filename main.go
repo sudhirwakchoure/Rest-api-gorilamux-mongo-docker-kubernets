@@ -19,7 +19,7 @@ func main() {
 	fmt.Println("Go  Tutorial")
 	ctx, canc := context.WithTimeout(context.Background(), 10*time.Second)
 	defer canc()
-	clientOptions := options.Client().ApplyURI("mongodb://db-service:27017")
+	clientOptions := options.Client().ApplyURI("mongodb://root:root@db-service:27017")
 	utility.Client, _ = mongo.Connect(ctx, clientOptions)
 
 	fmt.Println("connected")

@@ -8,7 +8,7 @@ WORKDIR /restapi
 
 # ADD ./ /restapi
 
-COPY  , /restapi/
+COPY  . /restapi/
 
 # COPY /home/sudhir/go/src/university/go.sum /app/ 
 

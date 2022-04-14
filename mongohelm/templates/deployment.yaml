@@ -2,32 +2,31 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: db-service
+    app: {{ .Values.selector.app }}
   name: db-deplyment
-  namespace: student
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: db-service
+      app: {{ .Values.selector.app }}
   template:
     metadata:
       labels:
-        app: db-service
+        app: {{ .Values.selector.app }}
     spec:
       volumes:
-        - name: volume
+        - name: volume 
           persistentVolumeClaim:
             claimName: claim
       containers:
-      - image: mongo
+      - image: {{ .Values.image.repository }}
         name: mongo
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: {{ .Values.resources.limits.memory}}
+            cpu: {{ .Values.resources.limits.cpu}}
         ports:
-        - containerPort: 27017
+        - containerPort: {{ .Values.ports.containerPort }}
         volumeMounts:
           - mountPath: /data/db/
             name: volume
@@ -42,3 +41,19 @@ spec:
               secretKeyRef:
                 name: mongosecret
                 key: password
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

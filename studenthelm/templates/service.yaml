@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.selector.app}}
+  name: studentservice
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  - name: app-service
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.service.targetPort }}
+    nodePort: {{ .Values.service.nodePort }}
+  selector:
+    app: {{ .Values.selector.app}}
