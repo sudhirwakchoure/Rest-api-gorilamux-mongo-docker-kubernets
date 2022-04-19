@@ -27,6 +27,16 @@ spec:
             cpu: {{ .Values.resources.limits.cpu}}
         ports:
         - containerPort: {{ .Values.ports.containerPort }}
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /students
+            port: 3000
         volumeMounts:
           - mountPath: /data/db/
             name: volume

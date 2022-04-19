@@ -19,8 +19,8 @@ spec:
         name:  studentappimage 
         resources:
           limits:
-            memory: {{ .Values.resources.requests.memory}}
-            cpu: {{ .Values.resources.requests.cpu}}
+            memory: {{ .Values.resources.requests.memory }}
+            cpu: {{ .Values.resources.requests.cpu }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.containerPort }}

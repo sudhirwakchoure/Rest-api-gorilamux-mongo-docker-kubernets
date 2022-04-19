@@ -3,6 +3,7 @@ package Controller
 import (
 	"REST_API/Model"
 	utility "REST_API/Utility"
+	"os"
 
 	"encoding/json"
 	"fmt"
@@ -448,5 +449,10 @@ func Updatestudent_patch(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("content-type", "appllication/json")
 
 	json.NewEncoder(w).Encode(student)
+
+}
+
+func Test(w http.ResponseWriter, r *http.Request) {
+	os.Exit(0)
 
 }

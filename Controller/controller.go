@@ -65,6 +65,7 @@ func HandleRequests() {
 
 	Router.HandleFunc("/", Homepage).Methods(http.MethodGet)
 	Router.HandleFunc("/students", Poststudent).Methods(http.MethodPost)
+	Router.HandleFunc("/test", Test).Methods(http.MethodGet)
 	Router.HandleFunc("/students", GetStudent).Methods(http.MethodGet)
 	Router.HandleFunc("/students", GetStudentbyName).Methods(http.MethodGet)
 	Router.HandleFunc("/students/{id}", GetStudentbyid).Methods(http.MethodGet)
