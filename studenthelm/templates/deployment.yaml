@@ -25,4 +25,14 @@ spec:
         ports:
         - containerPort: {{ .Values.containerPort }}
           name: studentapp
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /students
+            port: 3000
 
